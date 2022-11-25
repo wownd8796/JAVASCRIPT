@@ -62,6 +62,13 @@
       const elAll = sClass[0] + sClass[1] + sClass[2];
       elTotal.textContent += elAll;
       //   총점 (반복문활용)
+      // for (let i = 0; i < sClass.length; i++) {
+      //   total += sClass[i];
+      // }
+      avg = total / 3;
+      avg = avg.toFixed(2); /*소숫점 자리*/
+      avg = Math.round(avg); /*반올림*/
+      // grend = (avg > 60) ? '합격' ; '불합격' ;
     </script>
   </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: relative;
+            height: 500px;
+        }
+        img{
+            width:auto;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 1s;
+        }
+        img.hidden{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img class="old" src="./images/01.jpeg" alt="">
+        <img class="new hidden" src="" alt="">
+    </div>
+    <button>바꾸기</button>
+</body>
+
+<script>
+    const oldImg = document.querySelector('.old')
+    const newImg = document.querySelector('.new')
+    const btn = document.querySelector('button')
+
+    btn.addEventListener('click', imgChange)
+
+    function imgChange(){
+        newImg.setAttribute('src', `./images/02.jpeg`)
+        newImg.classList.toggle('hidden')
+    }
+
+
+</script>
+
+</html>

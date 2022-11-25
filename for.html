@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article class="ex1">
+      <h2>1부터 100까지 출력하시오. <button>출력</button></h2>
+      <div></div>
+    </article>
+
+    <article class="ex2">
+      <h2>1부터 100까지 수 중에서 짝수를 출력하시오. <button>출력</button></h2>
+      <div></div>
+    </article>
+
+    <article class="ex3">
+      <h2>
+        1부터 100까지 수 중에서 끝자리가 3,6,9를 찾아 출력하시오.
+        <button>출력</button>
+      </h2>
+      <div></div>
+    </article>
+
+    <script>
+      const elEx1 = document.querySelector(".ex1 div"),
+        elEx2 = document.querySelector(".ex2 div"),
+        elEx3 = document.querySelector(".ex3 div");
+      elbtn = document.querySelectorAll("button");
+
+      //   let result = "";
+      //   for (let i = 1; i <= 100; i++) {
+      //     result += i + ",";
+      //   }
+      //   elEx1.textContent = result;
+      //   ex1 1번 방법
+
+      //   let result = [];
+
+      //   for (let i = 1; i <= 100; i++) {
+      //     result[i - 1] = i;
+      //   }
+      //   // result[0] = 1;
+      //   // result.push(1);
+      //   elEx1.textContent = result;
+
+      //   //   ex1 2번 방법
+
+      //   // 짝수
+
+      //   result = [];
+      //   for (let i = 1; i <= 100; i++) {
+      //     if (i % 2 == 0) {
+      //       result.push(i);
+      //     }
+      //   }
+      //   elEx2.textContent = result;
+
+      //   //   3,6,9
+      //   result = [];
+      //   for (let i = 1; i <= 100; i++) {
+      //     if ((i % 10) % 3 == 0 && i % 10 != 0) {
+      //       // &&=관계연산자 / !=부정
+      //       result.push(i);
+      //     }
+      //   }
+      //   elEx3.textContent = result;
+
+      let result = [];
+      function numFun() {
+        for (let i = 1; i <= 100; i++) {
+          result[i - 1] = i;
+        }
+        // result[0] = 1;
+        // result.push(1);
+        elEx1.textContent = result;
+      }
+
+      function numEven() {
+        result = [];
+        for (let i = 1; i <= 100; i++) {
+          if (i % 2 == 0) {
+            result.push(i);
+          }
+        }
+        elEx2.textContent = result;
+      }
+
+      function num369() {
+        result = [];
+        for (let i = 1; i <= 100; i++) {
+          if ((i % 10) % 3 == 0 && i % 10 != 0) {
+            // &&=관계연산자 / !=부정
+            result.push(i);
+          }
+        }
+        elEx3.textContent = result;
+      }
+      //   elbtn[0].onclick = numFun;
+      //   //   numFun() 적용시 출력버튼 안눌러도 자동출력됨
+      //   elbtn[1].onclick = numEven;
+      //   elbtn[2].onclick = num369;
+
+      //   0 : button
+      //   1 : button
+      //   2 : button
+      elbtn.forEach(function (
+        btn,
+        key,
+        all /*(셀렉터, 키값, 전체셀렉터)매개변수=중괄호 영역안에서만 사용가능*/,
+      ) {
+        {
+          if (key == 0) {
+            btn.onclick = numFun;
+          } else if (key == 1) {
+            btn.onclick = numEven;
+          } else if (key == 2) {
+            btn.onclick = num369;
+          }
+          //   //   numFun();
+          //   //   numEven();
+          //   //   num369();
+        }
+        // 값(key): 0, 1, 2
+        // switch (key) {
+        //   case 0:
+        //     numFun();
+        //     break;
+        //   case 1:
+        //     numEven();
+        //     break;
+        //   default:
+        //     num369();
+        // }
+      });
+    </script>
+    <article class="gugu">
+      <h2>구구단</h2>
+      <div></div>
+      <button>2단 출력</button>
+    </article>
+    <script>
+      const elGugu = document.querySelector(".gugu > div");
+      elBtnGugu = document.querySelector(".gugu > button");
+
+      //   elGugu.innerHTML = 출력변수;
+
+      let gu = "";
+      let guguvalue;
+      //   gu += "2 x ${1} = ${2} <br>";
+      //   gu += "2 x ${2} = ${4} <br>";
+      //   gu += "2 x ${3} = ${6} <br>";
+      //   gu += "2 x ${4} = ${8} <br>";
+      //   gu += "2 x ${5} = ${10} <br>";
+      //   gu += "2 x ${6} = ${12} <br>";
+      //   gu += "2 x ${7} = ${14} <br>";
+
+      function kinggugu() {
+        for (i = 1; i < 10; i++) {
+          guguvalue = 2 * i;
+          gu += `2 x ${i} = ${guguvalue} <br>`;
+
+          elGugu.innerHTML = gu;
+        }
+      }
+
+      elBtnGugu.onclick = kinggugu;
+    </script>
+  </body>
+</html>
