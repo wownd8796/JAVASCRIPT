@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="test"></div>
+
+    <script>
+      let a = 0;
+
+      test = document.querySelector(".test");
+      console.log(test);
+
+      //  <!-- 2단 구구단 -->
+
+      for (i = 1; i < 10; i++) {
+        a = 2 * i;
+        // console.log(a);
+        // test.textContent += a;
+        // test.innerHTML += `${a} 대단 <br>`;
+        test.innerHTML += `2 x ${i} = ${a} <br>`;
+      }
+    </script>
+  </body>
+</html>
