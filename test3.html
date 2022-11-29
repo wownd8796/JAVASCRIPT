@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article class="self">
+      <h2>자판기</h2>
+      <div>
+        <p class="price">1000원</p>
+        <p class="btn">
+          <button data-price="300">밀크커피 (300)</button>
+          <button data-price="600">율무차 (600)</button>
+          <button data-price="400">우유 (400)</button>
+          <button>초기화</button>
+        </p>
+        <p>
+          조건) 총금액 1000원 -> 원하는 커피 2~3잔을 선택 -> 선택시 총금액에서
+          커피값을 빼주세요. -> 잔액 부족시 메세지 출력(잔액이 부족합니다.) ->
+          초기버튼 클릭시 다시 시작!
+        </p>
+      </div>
+    </article>
+    <style>
+      .self {
+        width: 800px;
+        border: 1px solid #aaa;
+        padding: 80px;
+        text-align: center;
+      }
+      .price {
+        background-color: #000;
+        padding: 10px 0;
+        color: yellow;
+      }
+      .btn {
+        background-color: #ddd;
+        padding: 20px 0;
+      }
+      .btn button:last-child {
+        background-color: red;
+      }
+      .self p:last-child {
+        white-space: pre-line;
+        text-align: left;
+        line-height: 2;
+      }
+    </style>
+    <script>
+      const elCoffee = document.querySelectorAll(".btn button");
+      const elPrice = document.querySelector("Price");
+      let allPrice = 1000;
+
+      function coffee(key, money) {
+        // 일처리
+        if (allPrice < money) {
+          alert("금액 부족");
+          return;
+        }
+        if (key == 3) {
+          allPrice = 1000;
+        } else {
+          allPrice = allPrice - money;
+        }
+        elPrice.textContent = allPrice;
+      }
+
+      elCoffee.forEach(function (el, key) {
+        el.onclick = function () {
+          coffee(key, Number(el.dataset.price));
+        };
+      });
+    </script>
+  </body>
+</html>
