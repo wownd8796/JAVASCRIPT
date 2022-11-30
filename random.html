@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>random.html</title>
+  </head>
+  <body>
+    <script>
+      Math.ceil(); /*한자리 올려버림 ex) 7.3이 나오면 8로 바꿈*/
+      Math.round(); /*반올림*/
+      Math.floor(); /*숫자와 상관없이 소수점 버림*/
+      function ranFun(n) {
+        return Math.ceil(Math.random() * n);
+      }
+
+      let data = [
+        { src: "./img/01.jpg" },
+        { src: "./img/02.jpg" },
+        { src: "./img/03.jpg" },
+        { src: "./img/04.jpg" },
+        { src: "./img/05.jpg" },
+        { src: "./img/06.jpg" },
+        { src: "./img/07.jpg" },
+        { src: "./img/08.jpg" },
+        { src: "./img/09.jpg" },
+        { src: "./img/10.jpg" },
+      ];
+      //data[랜덤 수 구해서 넣기].src
+      let imgURL = ranFun(10) - 1;
+      let elImg = document.createElement("img");
+      elImg.src = data[imgURL].src;
+      //append()요소 뒤쪽에 추가
+      document.body.prepend(elImg);
+
+      const elPhoto = document.querySelector("img");
+
+      let inter;
+
+      elPhoto.onmousemove = function () {
+        clearTimeout(inter);
+
+        inter = setTimeout(function () {
+          let imgURL = ranFun(10) - 1;
+          elPhoto.src = data[imgURL].src;
+        }, 500);
+      };
+
+      //             const bbbo = document.querySelector("body");
+      //          setInterval(function(){
+      //       let sip = Math.random() * 1000000;
+      //       let asd= Math.ceil(sip);
+      //       bbbo.style.backgroundColor = "#"+asd;
+      //   },100););
+    </script>
+  </body>
+</html>
