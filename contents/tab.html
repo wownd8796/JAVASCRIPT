@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab.html</title>
+  </head>
+  <body>
+    <article>
+      <h2>block, none</h2>
+      <button id="ex_btn">버튼</button>
+      <div id="ex_con" style="padding: 60px; border: 2px solid #000">
+        content
+      </div>
+    </article>
+    <script>
+      ex_btn.onclick = function () {
+        //id명칭으로 사용가능 하지만 이 페이지에 계속 있어야함
+        //클래스, 숫자
+        if (0) {
+          ex_con.style = "padding: 60px; border: 2px solid #000 display:none";
+        } else {
+          ex_con.style = "padding: 60px; border: 2px solid #000 display:block"; //=기존값 버리고 새값을 넣음
+        }
+      };
+    </script>
+  </body>
+</html>
