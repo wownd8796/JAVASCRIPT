@@ -9,21 +9,116 @@
   <body>
     <article>
       <h2>block, none</h2>
-      <button id="ex_btn">버튼</button>
-      <div id="ex_con" style="padding: 60px; border: 2px solid #000">
-        content
-      </div>
+      <!-- <button id="ex_btn">버튼</button> -->
+      <div id="ex_con">content</div>
+      <style>
+        #ex_con {
+          padding: 60px;
+          border: 2px solid #000;
+          display: none;
+        }
+        #ex_con.on {
+          padding: 60px;
+          border: 2px solid #000;
+          display: block;
+        }
+      </style>
     </article>
-    <script>
+    <!-- <script>
       ex_btn.onclick = function () {
         //id명칭으로 사용가능 하지만 이 페이지에 계속 있어야함
         //클래스, 숫자
-        if (0) {
-          ex_con.style = "padding: 60px; border: 2px solid #000 display:none";
+        // contains()= tru,false 값 주는것
+
+        ex_con.classList.toggle("on");
+        // document.body.classList.toggle("on");
+
+        // let blen = ex_btn.classList.contains("on");
+        let blen = ex_con.classList.contains("on");
+
+        // if (blen) {
+        //   ex_con.classList.add("on");
+        // } else {
+        //   ex_con.classList.remove("on");
+        // }
+
+        if (blen) {
+          ex_btn.textContent = "닫기";
         } else {
-          ex_con.style = "padding: 60px; border: 2px solid #000 display:block"; //=기존값 버리고 새값을 넣음
+          ex_btn.textContent = "열기";
         }
       };
+    </script> -->
+    <!-- 스타일 추가, 삭제, 수정
+    명령 발생 시점 (이벤트) -->
+
+    <article class="tab">
+      <div>
+        <button>tab1</button>
+        <button>tab2</button>
+        <button>tab3</button>
+      </div>
+      <div class="content">
+        <div>content1</div>
+        <div>content2</div>
+        <div>content3</div>
+      </div>
+    </article>
+
+    <style>
+      .tab {
+        margin: 200px 0;
+        width: 500px;
+      }
+      .tab button.on {
+        background-color: #000;
+        color: beige;
+      }
+      .tab .content {
+        min-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #000;
+      }
+      .tab .content > div {
+        display: none;
+        font-size: 2rem;
+      }
+      .tab .content > div.on {
+        display: block;
+      }
+    </style>
+    <script>
+      const elBtn = document.querySelectorAll(".tab button");
+      elContent = document.querySelectorAll(".content div");
+      let idx = 0;
+
+      // elBtn.classList.add("on");
+      // elBtn.classList.remove("on");
+
+      // elContent.classList.add("on");
+      // elContent.classList.remove("on");
+
+      elBtn.forEach(function (btn, key) {
+        btn.onclick = function () {
+          // elBtn[key].classList.toggle("on");
+          // elContent[key].classList.toggle("on");
+          elBtn[idx].classList.remove("on");
+          elContent[idx].classList.remove("on");
+
+          elBtn[key].classList.add("on");
+          elContent[key].classList.add("on");
+
+          idx = key;
+
+          // elBtn[0].classList.remove("on");
+          // elContent[0].classList.remove("on");
+
+          // elBtn[1].classList.add("on");
+          // elContent[1].classList.add("on");
+        };
+      });
     </script>
   </body>
 </html>
