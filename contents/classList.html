@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classList</title>
+  </head>
+  <body>
+    <article class="cls">
+      <h2>클래스 추가, 삭제, 변경</h2>
+      <ul>
+        <li>클래스를 추가('.hot')하시오.</li>
+        <li class="hot">클래스를 삭제('.hot')하시오.</li>
+        <li class="hot">클래스의 이름('.hot')을 가져오시오.</li>
+        <li>모든 li요소에 클래스('hot')을 추가하시오.</li>
+        <li>.hot 클래스를 선택자로 만들어 전체 수를 구하시오.</li>
+      </ul>
+    </article>
+    <script>
+      const elCls = document.querySelectorAll(".cls li");
+      //   const elHot = document.querySelectorAll(".hot");
+      //위로올리면 li class잡고있는 2개만 나타남 순서중요
+      //1
+      elCls[0].classList.add("hot");
+      //2
+      elCls[1].classList.remove("hot");
+      //3 class이름변경 (textContent,innerHTML과 같음)
+      elCls[2].className = "cool";
+      //   elCls[2].className += "cool"; (hotcool이란 문자가 붙어나옴 add 때문에 사용할일은 없음)
+      console.log(elCls[2].className);
+      //4
+      elCls.forEach(function (el) {
+        el.classList.add("hot");
+      });
+
+      elCls.forEach(function (el) {
+        if (el.classList.contains("cool") /*3번째 li에 true*/) {
+          el.onclick = function () {
+            el.classList.toggle("hot");
+          };
+        }
+      });
+
+      //5
+      //   const elHot = document.querySelectorAll(".hot");
+      //   console.log(elHot.length);
+    </script>
+  </body>
+</html>

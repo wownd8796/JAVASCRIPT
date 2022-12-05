@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>faq</title>
+  </head>
+  <body>
+    <article class="faq">
+      <h2>FAQ</h2>
+      <ul>
+        <li>
+          Q.최애 점심메뉴는?
+          <div>A.딱히없음 콩요리만아니면됨</div>
+        </li>
+        <li>
+          Q.제일좋아하는것은?
+          <div>A.잠자기</div>
+        </li>
+        <li>
+          Q.고민거리는?
+          <div>A.죽어서 나태지옥갈까봐 걱정임</div>
+        </li>
+        <li>
+          Q.지금하는생각은?
+          <div>A.발시리다</div>
+        </li>
+        <li>
+          Q.12월은 어떻게보낼것인가?
+          <div>A.잘</div>
+        </li>
+      </ul>
+    </article>
+    <style>
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .faq {
+        width: 500px;
+        margin: 100px auto;
+      }
+      .faq li {
+        border-top: 1px solid pink;
+        padding: 20px;
+      }
+      .faq li div {
+        background-color: beige;
+        padding: 20px;
+        display: none;
+      }
+      .faq li.on div {
+        display: block;
+      }
+    </style>
+    <script>
+      const elFaq = document.querySelectorAll(".faq li");
+      let idx = 0;
+
+      //   //   윤서
+      //   elFaq.forEach(function (el, key) {
+      //     el.onclick = function () {
+      //       elFaq[idx].classList.remove("on");
+      //       //지우라는 명령
+
+      //       //   el.classList.toggle("on");
+      //       el.classList.add("on");
+
+      //       elFaq.forEach(function (idx) {
+      //         if (el.classList.contains("on")) {
+      //           el.onclick = function () {
+      //             el.classList.toggle("on");
+      //           };
+      //         }
+      //       });
+      //       idx = key;
+      //       //key값 보관하는 변수
+      //     };
+      //   });
+
+      elFaq.forEach(function (el, key) {
+        el.onclick = function () {
+          if (el.classList.contains("on") != true) {
+            elFaq[idx].classList.remove("on");
+          }
+          el.classList.toggle("on");
+
+          idx = key;
+        };
+      });
+    </script>
+  </body>
+</html>
