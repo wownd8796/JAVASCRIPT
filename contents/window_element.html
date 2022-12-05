@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window_element</title>
+  </head>
+  <body>
+    <div class="offset">
+      <img src="../img/01.jpg" />
+      <img src="../img/02.jpg" />
+      <img src="../img/03.jpg" />
+      <p></p>
+    </div>
+    <style>
+      .offset {
+        position: relative;
+      }
+      .offset img {
+        width: 300px;
+      }
+      .offset p {
+        border: 3px solid red;
+        box-sizing: border-box;
+        position: absolute;
+        transition: 0.5s;
+        margin: 0;
+        width: 0;
+        height: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        const elOffset = document.querySelectorAll(".offset img");
+        elLine = document.querySelector(".offset p");
+
+        let pos = { w: 0, h: 0, x: 0, y: 0 };
+
+        console.log(elOffset[0].parentElement.offsetTop);
+
+        elOffset.forEach(function (el) {
+          el.onclick = function () {
+            pos.w = el.offsetWidth; //값 변경방법
+            pos.h = el.offsetHeight;
+            pos.x = el.offsetLeft;
+            pos.y = el.offsetTop;
+            elLine.style = `width:${pos.w}px; height:${pos.h}px; left:${pos.x}px; top:${pos.y}px;`;
+          };
+        });
+      });
+    </script>
+    <article class="ex">
+      <h2>이미지 슬라이드</h2>
+      <div class="ex-g">
+        <figure>
+          <img src="../img/01.jpg" />
+          <img src="../img/02.jpg" />
+          <img src="../img/03.jpg" />
+        </figure>
+      </div>
+    </article>
+    <style>
+      .ex {
+        margin: 200px auto;
+        width: 400px;
+      }
+      .ex-g {
+        border: 5px solid greenyellow;
+        box-sizing: border-box;
+      }
+      .ex-g figure {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        transition: 0.5s;
+      }
+      .ex-g figure img {
+        width: 100%;
+        flex-shrink: 0;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        const elFigure = document.querySelector(".ex figure"),
+          elPhoto = document.querySelectorAll(".ex img");
+
+        let num = elPhoto[0].offsetWidth;
+
+        elPhoto.forEach(function (el) {
+          el.onclick = function () {
+            // elFigure.style = `transform:translateX(-100%)`;
+            elFigure.style = `transform:translateX(-${num}px)`; //px로 바꿀때
+          };
+        });
+      });
+    </script>
+  </body>
+</html>

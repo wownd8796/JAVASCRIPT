@@ -82,7 +82,7 @@
 
       elFaq.forEach(function (el, key) {
         el.onclick = function () {
-          if (el.classList.contains("on") != true) {
+          if (!(/*true랑 같은역할*/ el.classList.contains("on")) /*!= true*/) {
             elFaq[idx].classList.remove("on");
           }
           el.classList.toggle("on");
