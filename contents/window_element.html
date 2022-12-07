@@ -87,14 +87,77 @@
         const elFigure = document.querySelector(".ex figure"),
           elPhoto = document.querySelectorAll(".ex img");
 
-        let num = elPhoto[0].offsetWidth;
+        let num = elPhoto[0].offsetWidth; //offsetWidth = img
 
-        elPhoto.forEach(function (el) {
+        console.log(
+          elPhoto[0].offsetLeft,
+          elPhoto[1].offsetLeft,
+          elPhoto[2].offsetLeft,
+        );
+        //부모가 position값을 가지면 부모로부터 수직 값 가져옴
+
+        elPhoto.forEach(function (el, key) {
           el.onclick = function () {
             // elFigure.style = `transform:translateX(-100%)`;
-            elFigure.style = `transform:translateX(-${num}px)`; //px로 바꿀때
+            let pos = elPhoto[key].offsetLeft;
+            elFigure.style = `transform:translateX(-${pos}px)`;
+            // elFigure.style = `transform:translateX(-${num * key}px)`; //<--figure /px로 바꿀때
           };
         });
+      });
+    </script>
+    <!-- 끝 -->
+
+    <article class="ex2">
+      <h2>이미지 슬라이드</h2>
+      <div class="ex-g">
+        <figure>
+          <img src="../img/01.jpg" />
+          <img src="../img/02.jpg" />
+          <img src="../img/03.jpg" />
+        </figure>
+      </div>
+      <div>
+        <button>prev</button>
+        <button>next</button>
+      </div>
+    </article>
+    <style>
+      .ex2 {
+        width: 400px;
+        margin: 200px auto;
+      }
+    </style>
+    <script>
+      const ex2Figure = document.querySelector(".ex2 figure"),
+        ex2Img = document.querySelectorAll(".ex2 img"),
+        btn = document.querySelectorAll(".ex2 button");
+
+      let idx = 0;
+      // let num = ex2Img[0].offsetLeft;
+
+      // prev버튼을 클릭하면 figure를 좌측으로 이동
+      // next버튼을 클릭하면 figure를 우측으로 이동
+
+      // 이동범위 -> 1개의 배너 크기만큼
+      // ex2Figure.style = `transform:translateX()`;
+      btn.forEach(function (button, key) {
+        button.onclick = function () {
+          // let idx = ex2Img[key].offsetLeft;
+          if (key == 0) {
+            if (idx > 0) {
+              idx--;
+            } //한줄짜리 간단한 명령 중괄호 생략가능
+            // prev
+          } else {
+            if (idx < 2) {
+              idx++;
+            }
+            //next
+          }
+
+          ex2Figure.style = `transform:translateX(${-idx * 100}%)`;
+        };
       });
     </script>
   </body>
