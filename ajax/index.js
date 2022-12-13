@@ -19,10 +19,21 @@ fetch("./data.json")
     init(gallery.data); //<-- forEach 문이랑 몽땅 때려넣으면됨 init은 그냥 함수이름임
     // console.log(gallery.data);
   });
+
 function init(data) {
   const elGallery = document.querySelector(".gallery div");
+  let gallerys = "";
+  //여기
+  //   for (let i = 0; i <= data.length; i++) {
+  //     gallerys += `<img src=${data[i].url}>`;
+  //   }
 
-  elGallery.innerHTML = `<img src=${data[0].url}>`;
+  data.forEach((item) => {
+    gallerys += `<img src=${item.url}>`;
+  });
+
+  elGallery.innerHTML = gallerys;
+  //   elGallery.innerHTML = `<img src=${data[0].url}>`;
 
   //   console.log(data[0].url);
 }
