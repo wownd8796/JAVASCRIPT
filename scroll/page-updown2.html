@@ -22,17 +22,17 @@
       } */
       aside {
         position: fixed;
-        right: 3%;
-        top: 50%;
-        transform: translateY(-50%);
+        right: 50%;
+        bottom: 3%;
+        transform: translateX(50%);
       }
       aside button {
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        display: block;
+        display: inline-block;
         padding: 0;
-        margin: 10px 0;
+        margin: 10px;
         border: none;
         background-color: rgb(179, 179, 242);
       }
@@ -49,6 +49,7 @@
         left: 0;
         top: 0;
         transition: 1s;
+        display: flex;
       }
       section {
         width: 100%;
@@ -57,6 +58,7 @@
         justify-content: center;
         align-items: center;
         font-size: 10rem;
+        flex-shrink: 0;
       }
 
       section:nth-child(even) {
@@ -77,6 +79,8 @@
       let idx = 0;
       let move = 0;
 
+      // 콘텐츠 위치값 offsetLeft
+
       elSec.forEach(function (elSec, key) {
         elAside.innerHTML += "<button></button>";
         elSec.addEventListener("mousewheel", function () {
@@ -84,10 +88,6 @@
         });
       });
 
-      // window.addEventListener("mousewheel", (event) => {
-      //   // console.log(event);
-      //   // wheelDelta 속성 - 스크롤 밑으로 내리면 음수, 올리면 양수
-      // });
       const elBtns = document.querySelectorAll("aside button");
       elBtns.forEach(function (btn, key) {
         btn.addEventListener("click", function () {
@@ -104,16 +104,16 @@
       function animation(key) {
         try {
           if (event.wheelDelta < 0) {
-            move = elSec[key++].nextElementSibling.offsetTop;
+            move = elSec[key++].nextElementSibling.offsetLeft;
             // key++;
           } else if (event.wheelDelta > 0) {
-            move = elSec[key--].previousElementSibling.offsetTop;
+            move = elSec[key--].previousElementSibling.offsetLeft;
             // key--;
           } else {
-            move = elSec[key].offsetTop;
+            move = elSec[key].offsetLeft;
           }
         } catch {}
-        elMain.style = `transform:translateY(-${move}px)`;
+        elMain.style = `transform:translateX(-${move}px)`;
         update(key);
       }
     </script>

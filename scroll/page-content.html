@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- page-content.html -->
+    <article>
+      <h2>contents</h2>
+      <div>
+        <figure><img src="../img/01.jpg" /></figure>
+        <figure><img src="../img/02.jpg" /></figure>
+        <figure><img src="../img/03.jpg" /></figure>
+        <figure><img src="../img/04.jpg" /></figure>
+        <figure><img src="../img/05.jpg" /></figure>
+        <figure><img src="../img/06.jpg" /></figure>
+        <figure><img src="../img/07.jpg" /></figure>
+      </div>
+    </article>
+
+    <style>
+      article {
+        text-align: center;
+      }
+
+      figure {
+        margin: 10% 0;
+      }
+
+      img {
+        width: 900px;
+        transition: 1s;
+        opacity: 0;
+        transform: translateY(50%);
+      }
+
+      figure.active img {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    </style>
+    <script>
+      const elFigure = document.querySelectorAll("figure");
+      window.addEventListener("scroll", function () {
+        elFigure.forEach(function (figure, key) {
+          if (
+            elFigure[key].offsetTop - window.innerHeight * 0.8 <
+            window.pageYOffset
+          ) {
+            elFigure[key].classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
