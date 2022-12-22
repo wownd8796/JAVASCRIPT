@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas width="1000" height="900"></canvas>
+    지원하지않으뮤
+    <script>
+      const canvas = document.querySelector("canvas"),
+        ctx = canvas.getContext("2d");
+
+      //   let x = 0;
+      //   function draw() {
+      //     x += 5;
+      //     ctx.clearRect(0, 0, 1000, 900);
+      //     ctx.fillStyle = "blue";
+      //     ctx.fillRect(x, 0, 200, 200);
+      //     if (x > 1000) {
+      //       x = 0;
+      //     }
+
+      //     requestAnimationFrame(draw);
+      //   }
+      //   draw();
+
+      function ran(n) {
+        return Math.floor(Math.random() * n);
+      }
+
+      class RectOject {
+        constructor(x, y, w, h, c) {
+          (this.x = ran(800)),
+            (this.y = ran(600)),
+            (this.w = ran(200) + 50),
+            (this.h = ran(200) + 50),
+            (this.c = `rgb(${ran(255)},${ran(255)},${ran(255)})`);
+        }
+        draw() {
+          ctx.fillStyle = this.c;
+          ctx.fillRect(this.x, this.y, this.w, this.h);
+        }
+      }
+      let rect = [];
+      for (let i = 0; i < 10; i++) {
+        rect.push(new RectOject());
+      }
+      function ani() {
+        ctx.clearRect(0, 0, 1000, 900);
+        rect.forEach((r) => {
+          r.x += 5;
+          r.draw();
+          if (r.x > 1000) {
+            r.x = 0;
+          }
+        });
+        requestAnimationFrame(ani);
+      }
+      ani();
+
+      //   let rect = new RectOject(0, 0, 200, 200, "orange");
+      //   function ani() {
+      //     rect.draw();
+      //   }
+      //   ani();
+    </script>
+  </body>
+</html>

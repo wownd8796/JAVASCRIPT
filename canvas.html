@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas width="1000" height="900"></canvas>
+    <script>
+      const canvas = document.querySelector("canvas"),
+        ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "pink";
+      ctx.fillRect(0, 0, 100, 100); //x,y,w,h
+
+      ctx.strokeStyle = "skyblue";
+      ctx.strokeRect(150, 0, 100, 100);
+
+      ctx.arc(350, 50, 50, 0, Math.PI * 2, false); //x,y,r,start deg,end deg, cw 원은 3시방향부터 시작
+      //   ctx.fill();
+      ctx.fill();
+
+      ctx.beginPath(); //새롭게 path 를 열겠다?
+      ctx.strokeStyle = "pink";
+      ctx.lineWidth = 10;
+      ctx.lineCap = "round";
+      ctx.lineTo(450, 50); //x,y
+      ctx.lineTo(550, 50);
+      ctx.stroke();
+      ctx.closePath();
+
+      const image = new Image();
+      image.src = "./img/04.jpg";
+
+      image.addEventListener("load", () => {
+        ctx.drawImage(image, 0, 200, 400, 300);
+      });
+
+      const video = document.createElement("video");
+      video.src = "./vdo.mp4";
+      video.muted = "muted";
+      video.play();
+
+      // video.addEventListener("canplaythrough", () => {
+      //   ctx.drawImage(video, 500, 200, 400, 300);
+      // });
+      video.addEventListener("canplaythrough", drawVideo);
+      function drawVideo() {
+        ctx.drawImage(video, 500, 200, 400, 300);
+        requestAnimationFrame(drawVideo);
+      }
+
+      //   console.log(ctx);
+    </script>
+  </body>
+</html>
