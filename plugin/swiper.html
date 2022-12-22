@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <!-- swiper은 바닐라로 만들어져 있어서 제이쿼리 노필요 -->
+    <style>
+      /* html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      } */
+
+      .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ddd;
+        margin: 0;
+      }
+
+      /* .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      } */
+    </style>
+    <div class="swiper mySwiper" style="height: 400px">
+      <div class="swiper-wrapper">
+        <div data-hash="slide1" class="swiper-slide">Slide 1</div>
+        <div data-hash="slide2" class="swiper-slide">Slide 2</div>
+        <div data-hash="slide3" class="swiper-slide">Slide 3</div>
+        <div data-hash="slide4" class="swiper-slide">Slide 4</div>
+        <div data-hash="slide5" class="swiper-slide">Slide 5</div>
+        <!-- <div data-hash="slide6" class="swiper-slide">Slide 6</div>
+        <div data-hash="slide7" class="swiper-slide">Slide 7</div>
+        <div data-hash="slide8" class="swiper-slide">Slide 8</div>
+        <div data-hash="slide9" class="swiper-slide">Slide 9</div> -->
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <script>
+      function init() {
+        var swiper = new Swiper(".mySwiper", {
+          loop: true,
+          spaceBetween: 30,
+          hashNavigation: {
+            watchState: true,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          },
+          on: {
+            slideChange: function (e) {
+              const elActive = document.querySelector(".swiper-slide-active");
+              if (elActive) elActive.style = `color:red`;
+            },
+          },
+        });
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>
