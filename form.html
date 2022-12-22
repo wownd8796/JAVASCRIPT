@@ -6,5 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+
+  <body>
+    <article>
+      <h2>약관동의</h2>
+      <form id="form_join" action="form-join.html">
+        <ul>
+          <li>
+            <input id="terms" type="checkbox" />
+            <label for="terms"></label>
+            이용약관 동의
+          </li>
+          <li>
+            <input id="privacy" type="checkbox" />
+            <label for="privacy"></label>
+            개인정보수집 동의
+          </li>
+          <li>
+            <input id="all" type="checkbox" />
+            <label for="all"></label>
+            전체 동의
+          </li>
+          <li>
+            <input type="submit" value="확인" />
+          </li>
+        </ul>
+      </form>
+    </article>
+
+    <script>
+      window.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // 동의 체크 상태(true,false)
+        console.log(terms.checked, privacy.checked, all.checked);
+        if (!terms.checked) {
+          alert("이용약관 동의 해주센");
+          return;
+        }
+        if (!privacy.checked) {
+          alert("개인정보 수집 동의 해주센");
+          return;
+        }
+        /* form_join.submit(); */
+      });
+
+      /*         all.addEventListener('click', function (e) {
+                    if (!event.currentTarget.checked) {
+                        terms.checked = false;
+                        privacy.checked = false;
+                    }
+                    else{
+                        terms.checked = true;
+                        privacy.checked = true;
+                    }
+                    terms.checked = all.checked;
+                    privacy.checked = all.checked;//위와 같은 의미
+                }) */
+      window.addEventListener("click", function (e) {
+        if (e.target.id == "all") {
+          terms.checked = all.checked;
+          privacy.checked = all.checked;
+        }
+        if (terms.checked && privacy.checked) {
+          all.checked = true;
+        } else {
+          all.checked = false;
+        }
+      });
+    </script>
+
+    <style>
+      input {
+        display: none;
+      }
+      input[type="submit"] {
+        display: block;
+      }
+
+      label {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: #ddd;
+        text-align: center;
+      }
+
+      label::after {
+        content: "v";
+        vertical-align: top;
+        font-size: 12px;
+      }
+
+      input:checked + label {
+        background-color: palevioletred;
+      }
+    </style>
+  </body>
 </html>
